@@ -23,7 +23,16 @@ class TmdbService
 
         return $response->json();
     }
+    public function getMovieDetails($id)
+    {
+        // Endpoint para obtener detalles de una película por su ID
+        $response = Http::withoutVerifying()->get("https://api.themoviedb.org/3/movie/{$id}", [
+            'api_key' => $this->apiKey,
+            'language' => 'es-ES',
+        ]);
 
+        return $response->json();
+    }
     public function searchMovies($query)
     {
         $response = Http::withoutVerifying()->get('https://api.themoviedb.org/3/search/movie', [
