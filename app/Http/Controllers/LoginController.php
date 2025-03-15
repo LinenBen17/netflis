@@ -9,14 +9,23 @@ class LoginController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function login(Request $request)
     {
         $userName = $request->input('username');
 
         session(['userSession' => $userName]);
-        session(['movieInterest' => ['A']]);
-        session(['movieInterestID' => [1]]);
+        session(['movieInterest' => []]);
+        session(['movieInterestID' => []]);
 
         return redirect()->route('movies.index');
+    }
+
+    public function logout(Request $request)
+    {
+        session()->forget('userSession');
+        session()->forget('movieInterest');
+        session()->forget('movieInterestID');
+
+        return view('login');
     }
 }
