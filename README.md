@@ -1,66 +1,121 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#"><img src="netflisLogo.png" width="400" alt="Netflis Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Netflis
 
-## About Laravel
+Netflis es una aplicación web creada con el fin de simular o ser un prototipo enfocada al concepto de Big Data. Esta app muestra una lista de películas populares utilizando la API de TMDB y permite a los usuarios guardar películas en su lista de intereses para posteriormente ser procesadas por un modelo Machine Learning que sugerirá películas en base a sus gustos con el dataset (ya incluido en el proyecto) utilizado para entrenarlo.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Características
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Listado de películas populares con información como título, descripción y póster (obtenido de la API TMDB).
+- Funcionalidad para buscar películas por nombre.
+- Posibilidad de guardar películas en una lista de intereses.
+- Ver Tendencias entre los Usuarios.
+- Ver estadísticas propias del usuario y a nivel global.
+- Notificaciones visuales con SweetAlert para confirmar acciones del usuario.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Requisitos previos
 
-## Learning Laravel
+Antes de comenzar, asegúrate de tener instalados los siguientes componentes:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP >= 8.0
+- Composer
+- Node.js y npm
+- Python >= 3.8
+- Flask y bibliotecas necesarias para Machine Learning
+- MongoDB (De preferencia en este proyecto) o cualquier base de datos compatible con Laravel
+- Servidor web como Apache o Nginx
+- **Clave de API de TMDB** (puedes obtenerla registrándote en [TMDB](https://www.themoviedb.org/))
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Instalación
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Sigue estos pasos para configurar el proyecto en tu entorno local:
 
-## Laravel Sponsors
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/netflis.git
+   cd netflis
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. Instala las dependencias de PHP:
+    ```bash
+    composer install
+    ```
 
-### Premium Partners
+3. Instala las dependencias de Node.js:
+    ```bash
+    npm install
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+4. Instala las dependencias de Python (asegúrate de tener un entorno virtual configurado):
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-## Contributing
+5. Copia el archivo de configuración de ejemplo y configura tus credenciales:
+    ```bash
+    cp .env.example .env
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Edita el archivo `.env` para configurar la conexión a tu base de datos y agrega tu clave de API de TMDB:
+   ```
+   TMDB_API_KEY=tu_clave_de_api
+   ```
 
-## Code of Conduct
+6. Genera la clave de la aplicación:
+    ```bash
+    php artisan key:generate
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7. Ejecuta las migraciones para crear las tablas en la base de datos:
+    ```bash
+    php artisan migrate
+    ```
 
-## Security Vulnerabilities
+8. Opcional: Si necesitas datos iniciales, ejecuta los seeders:
+    ```bash
+    php artisan db:seed
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+9. Compila los assets front-end:
+    ```bash
+    npm run dev
+    ```
 
-## License
+10. Inicia el servidor de desarrollo:
+    ```bash
+    php artisan serve
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+11. Inicia el servidor Flask para las peticiones de Machine Learning:
+    ```bash
+    uvicorn api:app --host 0.0.0.0 --port 5000 --reload
+    ```
+
+La aplicación estará disponible en http://localhost:8000.
+
+## Uso
+- Accede a la página principal para ver las películas populares (datos obtenidos de la API TMDB).
+- Haz clic en el botón "Me Interesa" para guardar una película en tu lista de intereses.
+- Usa la barra de búsqueda para encontrar películas específicas.
+- Entra a la sección "Mis Intereses" para ver el funcionamiento del ML.
+- Entra a la sección "Intereses Globales" para ver tendencias entre los usuarios.
+- Entra a la sección "Estadisticas" para ver estadísticas claves.
+
+## Tecnologías utilizadas
+- Backend: Laravel, Flask
+- Frontend: Blade, TailwindCSS, jQuery, SweetAlert
+- Base de datos: MongoDB
+- Machine Learning: Python, Flask
+- **API externa:** TMDB (The Movie Database)
+
+## Contribuciones
+Si deseas contribuir a este proyecto, por favor sigue estos pasos:
+
+- Haz un fork del repositorio.
+- Crea una rama para tu funcionalidad o corrección de errores:
+- Realiza tus cambios y haz un commit:
+- Envía tus cambios al repositorio remoto:
+- Abre un Pull Request en este repositorio.
+
+## Licencia
+Este proyecto está bajo la licencia MIT.
