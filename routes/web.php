@@ -5,7 +5,7 @@ use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('login');
+    return view('presentation');
 });
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
@@ -16,3 +16,5 @@ Route::get('/movies/search', [MovieController::class, 'search'])->name('movies.s
 Route::get('/movies/save-interest', [MovieController::class, 'saveInterest'])->name('movies.saveInterest');
 Route::get('/movies/delete-interest', [MovieController::class, 'deleteInterest'])->name('movies.deleteInterest');
 Route::get('/movies/own-interests', [MovieController::class, 'ownInterests'])->name('movies.ownInterests');
+Route::get('/movies/global-interests', [MovieController::class, 'getPopularMovies'])->name('movies.globalInterests');
+Route::get('/movies/statistics', [MovieController::class, 'getStatistics'])->name('movies.statistics');

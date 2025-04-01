@@ -13,9 +13,14 @@ class LoginController extends Controller
     {
         $userName = $request->input('username');
 
+        // Regenerar la sesión para evitar conflictos con sesiones previas
+        session()->regenerate();
+
+        // Establecer datos de sesión
         session(['userSession' => $userName]);
         session(['movieInterest' => []]);
         session(['movieInterestID' => []]);
+        session(['unique_user_id' => $userName . '-' . \Illuminate\Support\Str::uuid()]); // Inicializar user_id
 
         return redirect()->route('movies.index');
     }
